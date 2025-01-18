@@ -1,0 +1,27 @@
+Datum en tijd van het overleg: Niet aangegeven
+Aanwezige deelnemers: Esther, Pim, Milan, Tijn
+Hoofddoel(en) van de vergadering: Voortgang bespreken en plannen maken voor een sessie op 21ste waarbij aantal use cases worden voorbereid. 
+
+- Agenda:
+  - Bepalen wat er moet gebeuren voor de sessie op 21ste.
+  - Voorbereiden van 1, 2 of 3 use cases.
+  - Delen van een model of stappenplan.
+
+- Besproken onderwerpen:
+  - Informatie verzamelen: Voor de sessie is er concrete en precieze informatie nodig.
+  - Use cases: Er wordt besproken om 1, 2 of 3 use cases voor te bereiden voor de sessie op 21ste.
+  - AI-oplossingen: Verschillende mogelijke AI oplossingen worden besproken.
+  - Testen en experimenteren: Na het bedenken van oplossingen, wordt er getest en geëxperimenteerd.
+
+- Actiepunten:
+  - Voorbereiden van de sessie op 21ste: Het team is verantwoordelijk om de sessie voor te bereiden. 
+  - Voorbereiden van use cases: Het team moet 1, 2 of 3 use cases voorbereiden voor de sessie op 21ste. 
+  - Doortrekken van discussies: Aanvullende discussies worden voortgezet op gesprekken van de vorige dag.
+
+- Besluiten:
+  - Besluit om klein te beginnen en zich te concentreren op twee onderwerpen: verslaglegging en samenstelling.
+  - Besluit om aantal voorgestelde oplossingen te testen en te experimenteren.
+
+- Overige opmerkingen:
+  - Milan en Tijn zijn akkoord met de besproken aanpak en zullen vragen stellen als er behoefte aan is.
+  - Vereiste van grondige kennis over de huidige situatie per use case wordt benadrukt.

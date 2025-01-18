@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Upload & Transcription - CultuurOost</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Audio Transcriptie</h1>
+        </header>
+
+        <main class="main-content">
+            <section class="upload-section">
+                <form id="uploadForm" class="upload-form">
+                    <label for="audioFile" class="file-label">Kies een audiobestand:</label>
+                    <input type="file" 
+                           id="audioFile" 
+                           name="audio" 
+                           accept="audio/*" 
+                           required 
+                           class="file-input">
+
+                    <button type="submit" class="submit-button">Upload & Verwerk</button>
+                </form>
+
+                <div id="progress" class="progress" aria-live="polite" style="display: none;">
+                    <p>Verwerken... Even geduld alstublieft.</p>
+                </div>
+
+                <div id="error" class="error-message" style="display: none;"></div>
+            </section>
+
+            <section id="summary-section" class="summary-section" style="display: none;">
+                <h2>Samenvatting</h2>
+                <p id="summary-text" class="summary-text"></p>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 CultuurOost</p>
+        </footer>
+    </div>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const progress = document.getElementById('progress');
+        const summarySection = document.getElementById('summary-section');
+        const summaryText = document.getElementById('summary-text');
+        const error = document.getElementById('error');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            const audioFile = document.getElementById('audioFile').files[0];
+            formData.append('audio', audioFile);
+
+            progress.style.display = 'block';
+            summarySection.style.display = 'none';
+            error.style.display = 'none';
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error! status: ${response.status}\nResponse: ${errorText}`);
+                }
+
+                const result = await response.json();
+                summaryText.textContent = result.summary;
+                summarySection.style.display = 'block';
+            } catch (err) {
+                console.error('Error details:', err);
+                error.textContent = `Error: ${err.message}`;
+                error.style.display = 'block';
+            } finally {
+                progress.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
