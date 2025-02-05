@@ -16,16 +16,11 @@ const OpenAI = require('openai');
 const mammoth = require('mammoth');
 const PDFParser = require('pdf-parse');
 const ngrok = require('ngrok'); // (Currently not used in serverless mode)
-import pLimit from 'p-limit';
+const pLimit = require('p-limit');
 
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath);
-
-async function getLimitFunction() {
-  return pLimit;
-}
-
 
 // Simple logger utility
 const logger = {
@@ -202,8 +197,7 @@ async function chunkAndTranscribeAudioParallel(filePath) {
   }
 
   // Limit concurrent transcription tasks (max 10 at a time)
-  const createLimit = await getLimitFunction();
-  const limit = createLimit(10);
+  const limit = pLimit(10);
   const partialTranscripts = await Promise.all(
     chunks.map((chunk) =>
       limit(async () => {
