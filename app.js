@@ -13,7 +13,6 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const OpenAI = require('openai');
-const ffmpeg = require('fluent-ffmpeg');
 const mammoth = require('mammoth');
 const PDFParser = require('pdf-parse');
 const ngrok = require('ngrok'); // (Currently not used in serverless mode)
