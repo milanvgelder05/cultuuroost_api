@@ -16,16 +16,16 @@ const OpenAI = require('openai');
 const mammoth = require('mammoth');
 const PDFParser = require('pdf-parse');
 const ngrok = require('ngrok'); // (Currently not used in serverless mode)
+import pLimit from 'p-limit';
+
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath);
 
-// Dynamic p-limit function
 async function getLimitFunction() {
-  // Dynamically import p-limit when needed.
-  const { default: limit } = await import('p-limit');
-  return limit;
+  return pLimit;
 }
+
 
 // Simple logger utility
 const logger = {
