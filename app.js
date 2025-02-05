@@ -406,4 +406,4 @@ app.use((err, req, res, next) => {
 });
 
 // NOTE: We have removed the app.listen() call since Netlify will invoke the exported app as a serverless function.
-module.exports = app;
+module.exports = serverless(app);
