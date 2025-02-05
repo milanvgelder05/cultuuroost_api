@@ -4,6 +4,7 @@
 
 require('dotenv').config();
 
+const serverless = require('serverless-http');
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
