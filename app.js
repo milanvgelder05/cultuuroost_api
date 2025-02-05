@@ -13,7 +13,13 @@ const ffmpeg = require('fluent-ffmpeg');
 const mammoth = require('mammoth');
 const PDFParser = require('pdf-parse');
 const ngrok = require('ngrok'); // (Currently not used in serverless mode)
-const pLimit = require('p-limit');
+const pLimitModule = import('p-limit')
+
+// Dynamic p-limit function
+async function getLimitFunction() {
+  const { default: limit } = await pLimitModule;
+  return limit;
+}
 
 // Simple logger utility
 const logger = {
@@ -189,7 +195,8 @@ async function chunkAndTranscribeAudioParallel(filePath) {
   }
 
   // Limit concurrent transcription tasks (max 10 at a time)
-  const limit = pLimit(10);
+  const createLimit = await getLimitFunction();
+  const limit = createLimit(10);
   const partialTranscripts = await Promise.all(
     chunks.map((chunk) =>
       limit(async () => {
