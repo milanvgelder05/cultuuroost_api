@@ -1,0 +1,83 @@
+<h1>Vergaderverslag</h1>
+
+<h2>Algemene Gegevens</h2>
+<ul>
+    <li>Datum: 2025-01-09</li>
+    <li>Locatie: Online</li>
+    <li>Deelnemers: Mano, Pim, Tijn, Hans, Milan</li>
+    <li>Afwezigen: Geen</li>
+    <li>Doel van het gesprek: Use case overleg</li>
+    <li>Vertrouwelijkheid: Niet vertrouwelijk</li>
+</ul>
+
+<h2>Inleiding</h2>
+<p>
+Tijdens de vergadering op 9 januari 2025 stond het voorbereiden van use cases centraal. Het hoofddoel was om de benodigde informatie te verzamelen voor een sessie op 21 januari, waarin 1 tot 3 use cases in een bèta-versie worden gepresenteerd. Dit is van belang omdat het de basis legt voor verdere ontwikkeling en implementatie bij klanten. De planning is om deze use cases te finetunen in de genoemde sessie. In de vorige vergadering werd afgesproken dat er diversiteit in de benadering wordt nagestreefd, en dat de gesprekken met teamleden, inclusief Esther, deze aanpak ondersteunen. De focus ligt op het identificeerbare probleem, de mogelijke oplossingen met AI en het testen van deze oplossingen.
+</p>
+
+<h2>Hoofdpunten</h2>
+<ul>
+    <li>
+        <strong>Probleemoriëntatie:</strong> Het bespreken van pijnpunten die gebruik maken van bestaande referentiekaders om een effectieve use case te vormen.
+    </li>
+    <li>
+        <strong>Selectie van Use Cases:</strong> Er is besloten om drie use cases in detail uit te werken voor de sessie op 21 januari. Dit zijn verslaglegging, samenvatting en een derde, niet nader genoemde use case.
+    </li>
+    <li>
+        <strong>Experimentele benadering:</strong> Verschillende AI-oplossingen worden overwogen, waarbij de focus ligt op testen en experimenteren.
+    </li>
+    <li>
+        <strong>Niet-besproken onderwerpen:</strong> Er is geen diepgaande discussie geweest over de praktische toepassing en integratie van deze use cases bij de klant.
+    </li>
+</ul>
+
+<h2>Actiepunten en Besluiten</h2>
+<ul>
+    <li>
+        <strong>Acitepunt 1:</strong> Identificatie van pijnpunten en oplossingen per use case 
+        <ul>
+            <li>Verantwoordelijk: Mano en Pim</li>
+            <li>Deadline: 20 januari 2025</li>
+            <li>Status: Hoog</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Actiepunt 2:</strong> Voorbereiden presentatiesessie 21 januari voor use cases
+        <ul>
+            <li>Verantwoordelijk: Hele team</li>
+            <li>Deadline: 21 januari 2025</li>
+            <li>Status: Hoog</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Besluit 1:</strong> Focus op verslaglegging en samenvatting als kern use cases voor presentatie 
+    </li>
+</ul>
+
+<h2>Afsluiting</h2>
+<ul>
+    <li>De belangrijkste conclusies zijn dat er een duidelijk plan ligt voor de presentatie van use cases en dat de uitdagingen als kansen worden bekeken binnen de voorgestelde tijdlijn.</li>
+    <li>Vervolgstappen: Uitwerking en detaillering van de geselecteerde use cases voor de sessie op de 21ste.</li>
+    <li>De volgende bijeenkomst staat gepland op 21 januari 2025 voor de presentatiesessie.</li>
+</ul>
+
+<h2>AI Aanbevelingen en Reflecties</h2>
+<ul>
+    <li>
+        <strong>Vergeten onderwerpen:</strong> Het zou nuttig zijn om de implementatie van de use cases bij klanten te analyseren om te zien hoe deze daadwerkelijk waarde toevoegen.
+    </li>
+    <li>
+        <strong>Aanvullende stakeholders:</strong> Overweeg om klantvertegenwoordigers uit te nodigen voor feedback in een vroeg stadium van de ontwikkelingscyclus.
+    </li>
+    <li>
+        <strong>Risico's en kansen:</strong> Het niet direct betrekken van het ontwikkelteam kan leiden tot miscommunicatie bij de implementatie van technische oplossingen.
+    </li>
+    <li>
+        <strong>Verbanden met andere projecten:</strong> Het huidige project kan worden geïntegreerd met eerdere initiatieven die succesvol AI-gebaseerde oplossingen hebben geïmplementeerd.
+    </li>
+    <li>
+        <strong>Efficiëntere vervolgstappen:</strong> Stel duidelijke KPI's op voor elk aspect van de use case om gericht succes meetbaar te maken.
+    </li>
+    <li>
+        <strong>Beste practices:</strong> Gebruik iteratieve benadering en feedback loops om de kwaliteit van de eindoplossing continu te verbeteren.</li>
+</ul>

@@ -1,0 +1,56 @@
+<h1>ALGEMENE GEGEVENS</h1>
+<ul>
+    <li><strong>Datum:</strong> 2025-01-09</li>
+    <li><strong>Locatie:</strong> Online</li>
+    <li><strong>Deelnemers:</strong> Mano, Pim, Milan, Tijn, Hans</li>
+    <li><strong>Doel van het gesprek:</strong> Use case overleg</li>
+    <li><strong>Vertrouwelijkheid:</strong> Niet vertrouwelijk</li>
+</ul>
+
+<h2>INLEIDING</h2>
+<p>
+    Het hoofddoel van de vergadering was om strategieën voor te bereiden rondom het opstellen en uitwerken van use cases die op de 21ste zullen worden besproken en gefinetuned. De context voor dit gesprek was de noodzaak om concreet en voorbereid te zijn voor de aankomende sessie, mogelijk met beta use cases. Dit overleg heeft bredere implicaties voor het bedrijf omdat het de basis vormt voor toekomstige klantinteracties en oplossingsexperimenten. Er werd vermeld dat Esther recentelijk was benaderd voor feedback en dat zij instemde met de huidige aanpak, wat de interne afstemming en samenwerking versterkt. Vorige actiepunten, zoals het ordenen van use cases en het bespreken van modelhouvasten, zijn grotendeels ingewilligd met nog enkele openstaande punten betreffende de concretisering van bepaalde use cases.
+</p>
+
+<h2>HOOFDPUNTEN</h2>
+<ul>
+    <li>De noodzaak om 1 tot 3 use cases in voor te bereiden als beta- of halfproducten om tijdens de sessie op de 21ste te kunnen finetunen.</li>
+    <li>De voorbereidingen zijn afhankelijk van de complexiteit en praktische beschikbaarheid vóór de 21ste januari.</li>
+    <li>Het proces omvat het identificeren van problemen die opgelost moeten worden, mogelijke opbrengsten evalueren, en beschikbare AI-oplossingen overwegen.</li>
+    <li>Er was overleg over het samenvatten en verslag leggen als de twee belangrijkste use cases waarop wordt gefocust.</li>
+    <li>Niet besproken, maar relevant: het betrekken van aanvullende teamleden voor specifieke expertise in AI-oplossingen.</li>
+    <li>Geen belangrijke nieuwe onderwerpen geïdentificeerd, alleen behoefte aan doorontwikkeling van bestaande ideeën.</li>
+</ul>
+
+<h2>ACTIEPUNTEN EN BESLUITEN</h2>
+<ul>
+    <li><strong>Actiepunt:</strong> Voorbereiden van 2 specifieke use cases (verslaglegging en samenvatten) voor de sessie op de 21ste.
+        <ul>
+            <li><strong>Verantwoordelijke:</strong> Mano</li>
+            <li><strong>Deadline:</strong> 2025-01-20</li>
+            <li><strong>Status:</strong> Prioriteit hoog</li>
+        </ul>
+    </li>
+    <li><strong>Besluit:</strong> Focus op het identificeren van specifieke pijnpunten en resultaten voor elke use case.
+        <ul>
+            <li><strong>Context:</strong> Nodig voor de effectiviteit van de sessie op de 21ste.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>AFSLUITING</h2>
+<ul>
+    <li><strong>Belangrijkste conclusies:</strong> Het voorbereiden van concrete use cases is essentieel voor de sessie op de 21ste.</li>
+    <li><strong>Vervolgstappen:</strong> Identificeren van kernproblemen per use case en uitwerken van haalbare oplossingen.</li>
+    <li><strong>Datum volgende vergadering:</strong> Onbevestigd, maar verwachte vervolgvergadering na de sessie 21 januari.</li>
+</ul>
+
+<h2>AI AANBEVELINGEN EN REFLECTIES</h2>
+<ul>
+    <li><strong>Vergeten onderwerpen:</strong> Integratie van klantfeedback mogelijk om de voorbereidende use cases verder te versterken.</li>
+    <li><strong>Aanvullende stakeholders:</strong> Betrek AI-specialisten vroegtijdig voor uitgebreide testmogelijkheden en feedback.</li>
+    <li><strong>Risico's of kansen:</strong> Het niet tijdig oplossen van knelpunten kan de effectiviteit van de sessie op de 21ste ondermijnen; echter biedt het ook kansen voor innovatieve AI-oplossingen indien juist aangepakt.</li>
+    <li><strong>Verbanden met andere projecten:</strong> Zorg dat er afstemming is met lopende klantprojecten die vergelijkbare technologieën en technieken gebruiken.</li>
+    <li><strong>Efficiënte vervolgstappen:</strong> Vul een overzicht in van elk pijnpunt, bijbehorend AI-oplossing, en verwachte resultaten voorafgaand aan de sessie.</li>
+    <li><strong>Beste practices:</strong> Test en verfijn oplossingen in een gecontroleerde omgeving voordat ze worden gepresenteerd aan belanghebbenden op de 21ste.</li>
+</ul>
