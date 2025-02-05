@@ -1,8 +1,17 @@
 [build]
-  command = "npm install"
-  publish = "public"
+  command   = "npm install"
+  publish   = "public"
+  functions = "netlify/functions"
 
+# Redirect API calls (for example, anything under /api/) to your serverless function
+[[redirects]]
+  from = "/api/*"
+  to   = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+# Catch-all redirect for Single Page Applications
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to   = "/index.html"
   status = 200

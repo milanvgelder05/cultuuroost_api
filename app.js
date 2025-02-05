@@ -1,5 +1,5 @@
 /**************************************
- * app.js (of server.js)
+ * app.js
  **************************************/
 
 require('dotenv').config();
@@ -12,7 +12,7 @@ const OpenAI = require('openai');
 const ffmpeg = require('fluent-ffmpeg');
 const mammoth = require('mammoth');
 const PDFParser = require('pdf-parse');
-const ngrok = require('ngrok'); // (Currently not used)
+const ngrok = require('ngrok'); // (Currently not used in serverless mode)
 const pLimit = require('p-limit');
 
 // Simple logger utility
@@ -213,7 +213,6 @@ async function chunkAndTranscribeAudioParallel(filePath) {
 }
 
 // Generates a summary using OpenAI Chat Completions API.
-// The function now accepts an "instruction" parameter and uses it in the prompt.
 async function generateSummary(transcriptionText, instruction = '', contextFilePath = null, generalInfo = null) {
   let systemPrompt = '';
   try {
@@ -252,8 +251,7 @@ async function generateSummary(transcriptionText, instruction = '', contextFileP
       }
     }
 
-    // Build the messages for the Chat API. The instruction is included if provided.
-
+    // Build the messages for the Chat API.
     const messages = [
       {
         role: 'system',
@@ -407,34 +405,5 @@ app.use((err, req, res, next) => {
   });
 });
 
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, '0.0.0.0', () => {
-//   logger.info(`Server running on port ${PORT}`);
-// });
-
-
-
-const PORT = process.env.PORT || 3000;
-
-// Start the Express server
-app.listen(PORT, '0.0.0.0', async () => {
-  logger.info(`Server running on port ${PORT}`);
-
-  try {
-    // Optionally set the authtoken if provided
-    if (process.env.NGROK_AUTH_TOKEN) {
-      await ngrok.authtoken(process.env.NGROK_AUTH_TOKEN);
-      logger.info('ngrok auth token set successfully.');
-    }
-
-    // Open an ngrok tunnel on the same port as your Express server
-    const url = await ngrok.connect({
-      addr: PORT,
-      // Optional: You can specify a region (e.g., 'eu', 'us', etc.)
-      region: process.env.NGROK_REGION || 'us'
-    });
-    logger.info(`ngrok tunnel established at: ${url}`);
-  } catch (error) {
-    logger.error(`Failed to establish ngrok tunnel: ${error.message}`);
-  }
-});
+// NOTE: We have removed the app.listen() call since Netlify will invoke the exported app as a serverless function.
+module.exports = app;
