@@ -1,0 +1,12 @@
+[
+build
+]
+  command = "npm install"
+  publish = "public"
+
+[[
+redirects
+]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
