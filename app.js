@@ -13,11 +13,11 @@ const ffmpeg = require('fluent-ffmpeg');
 const mammoth = require('mammoth');
 const PDFParser = require('pdf-parse');
 const ngrok = require('ngrok'); // (Currently not used in serverless mode)
-const pLimitModule = import('p-limit')
 
 // Dynamic p-limit function
 async function getLimitFunction() {
-  const { default: limit } = await pLimitModule;
+  // Dynamically import p-limit when needed.
+  const { default: limit } = await import('p-limit');
   return limit;
 }
 
