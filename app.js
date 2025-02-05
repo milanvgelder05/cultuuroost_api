@@ -4,6 +4,9 @@
 
 require('dotenv').config();
 
+const ffmpeg = require('fluent-ffmpeg');
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffprobePath = require('@ffprobe-installer/ffprobe').path;
 const serverless = require('serverless-http');
 const express = require('express');
 const multer = require('multer');
@@ -14,6 +17,9 @@ const ffmpeg = require('fluent-ffmpeg');
 const mammoth = require('mammoth');
 const PDFParser = require('pdf-parse');
 const ngrok = require('ngrok'); // (Currently not used in serverless mode)
+
+ffmpeg.setFfmpegPath(ffmpegPath);
+ffmpeg.setFfprobePath(ffprobePath);
 
 // Dynamic p-limit function
 async function getLimitFunction() {

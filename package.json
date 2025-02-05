@@ -2,20 +2,19 @@
     "name": "cultuuroost-api",
     "version": "1.0.0",
     "scripts": {
-      "start": "node app.js",
-      "dev": "netlify dev"
+        "start": "node app.js",
+        "dev": "netlify dev"
     },
     "dependencies": {
-      "dotenv": "^16.0.0",
-      "express": "^4.18.2",
-      "serverless-http": "^3.2.0",
-      "multer": "^1.4.5-lts.1",
-      "openai": "^3.1.0",
-      "fluent-ffmpeg": "^2.1.2",
-      "mammoth": "^1.4.21",
-      "pdf-parse": "^1.1.1",
-      "ngrok": "^4.3.3",
-      "p-limit": "^4.0.0"
+        "dotenv": "^16.0.0",
+        "express": "^4.18.2",
+        "fluent-ffmpeg": "^2.1.2",
+        "mammoth": "^1.4.21",
+        "multer": "^1.4.5-lts.1",
+        "ngrok": "^4.3.3",
+        "openai": "^4.83.0",
+        "p-limit": "^4.0.0",
+        "pdf-parse": "^1.1.1",
+        "serverless-http": "^3.2.0"
     }
-  }
-  
+}
