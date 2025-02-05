@@ -12,3 +12,13 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[functions]
+node_bundler = "esbuild"
+external_node_modules = [
+  "pdf-parse",
+  "mammoth",
+  "p-limit",
+  "@ffmpeg-installer/ffmpeg",
+  "@ffprobe-installer/ffprobe"
+]

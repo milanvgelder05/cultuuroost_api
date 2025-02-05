@@ -1,6 +1,7 @@
 {
     "name": "cultuuroost-api",
     "version": "1.0.0",
+    "type" : "module",
     "scripts": {
         "start": "node app.js",
         "dev": "netlify dev"

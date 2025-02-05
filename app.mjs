@@ -1,24 +1,29 @@
 /**************************************
- * app.js
+ * app.js (ESM)
  **************************************/
 
-require('dotenv').config();
+import 'dotenv/config';                      // Equivalent to require('dotenv').config();
+import ffmpeg from 'fluent-ffmpeg';
+import { path as ffmpegPath } from '@ffmpeg-installer/ffmpeg';
+import { path as ffprobePath } from '@ffprobe-installer/ffprobe';
+import serverless from 'serverless-http';
+import express from 'express';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
+import { OpenAI } from 'openai';             // v4.x import
+import mammoth from 'mammoth';
+import pdfParse from 'pdf-parse';
+import ngrok from 'ngrok';                  // (Currently not used in serverless mode)
+import pLimit from 'p-limit';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-const ffmpeg = require('fluent-ffmpeg');
-const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
-const ffprobePath = require('@ffprobe-installer/ffprobe').path;
-const serverless = require('serverless-http');
-const express = require('express');
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
-const OpenAI = require('openai');
-const mammoth = require('mammoth');
-const PDFParser = require('pdf-parse');
-const ngrok = require('ngrok'); // (Currently not used in serverless mode)
-const pLimit = require('p-limit');
+// We need __dirname in ESM:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-
+// Configure ffmpeg paths
 ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath);
 
@@ -35,10 +40,9 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 logger.info('Static files middleware configured');
 
-// Configure storage and filename handling for uploads
+// Multer storage for serverless environment -> /tmp/uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    // Use /tmp/uploads as the upload directory in a serverless environment
     const uploadDir = path.join('/tmp', 'uploads');
     try {
       if (!fs.existsSync(uploadDir)) {
@@ -58,7 +62,7 @@ const storage = multer.diskStorage({
   }
 });
 
-// File filter to accept only valid audio and context files
+// File filter for audio/context
 const fileFilter = (req, file, cb) => {
   const allowedAudioTypes = ['audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/x-m4a', 'audio/webm'];
   const allowedContextTypes = [
@@ -79,7 +83,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// Reads a context file (DOCX, PDF, or text) and returns its content as a string.
+// Reads a context file (DOCX, PDF, or text) and returns its content.
 async function readContextFile(contextFilePath) {
   try {
     const ext = path.extname(contextFilePath).toLowerCase();
@@ -90,7 +94,7 @@ async function readContextFile(contextFilePath) {
     } else if (ext === '.pdf') {
       logger.info('Processing PDF file');
       const pdfBuffer = fs.readFileSync(contextFilePath);
-      const result = await PDFParser(pdfBuffer);
+      const result = await pdfParse(pdfBuffer);
       return result.text.trim();
     } else {
       logger.info('Processing as text file');
@@ -102,17 +106,23 @@ async function readContextFile(contextFilePath) {
   }
 }
 
-// Convert an audio file to MP3 format using ffmpeg.
+// Convert audio to MP3 if needed
 function convertToMp3(inputPath, outputPath) {
   return new Promise((resolve, reject) => {
     try {
       const inputSize = fs.statSync(inputPath).size;
-      logger.info(`File size before MP3 conversion: ${inputSize} bytes (${path.basename(inputPath)})`);
+      logger.info(
+        `File size before MP3 conversion: ${inputSize} bytes (${path.basename(inputPath)})`
+      );
     } catch (error) {
-      logger.error(`Could not read file size for ${path.basename(inputPath)}: ${error.message}`);
+      logger.error(
+        `Could not read file size for ${path.basename(inputPath)}: ${error.message}`
+      );
     }
 
-    logger.info(`Converting ${path.basename(inputPath)} to MP3 format as ${path.basename(outputPath)}`);
+    logger.info(
+      `Converting ${path.basename(inputPath)} to MP3 format as ${path.basename(outputPath)}`
+    );
 
     ffmpeg(inputPath)
       .toFormat('mp3')
@@ -120,9 +130,13 @@ function convertToMp3(inputPath, outputPath) {
         logger.info(`Audio conversion completed: ${path.basename(outputPath)}`);
         try {
           const outputSize = fs.statSync(outputPath).size;
-          logger.info(`File size after MP3 conversion: ${outputSize} bytes (${path.basename(outputPath)})`);
+          logger.info(
+            `File size after MP3 conversion: ${outputSize} bytes (${path.basename(outputPath)})`
+          );
         } catch (error) {
-          logger.error(`Could not read file size for ${path.basename(outputPath)}: ${error.message}`);
+          logger.error(
+            `Could not read file size for ${path.basename(outputPath)}: ${error.message}`
+          );
         }
         resolve(outputPath);
       })
@@ -134,10 +148,12 @@ function convertToMp3(inputPath, outputPath) {
   });
 }
 
-// Creates a 5-minute chunk from the input file.
+// Creates a 5-minute chunk from the input file
 function createChunk(inputFile, outputFile, startTime, duration) {
   return new Promise((resolve, reject) => {
-    logger.info(`Creating chunk [start=${startTime}s, duration=${duration}s] => ${path.basename(outputFile)}`);
+    logger.info(
+      `Creating chunk [start=${startTime}s, duration=${duration}s] => ${path.basename(outputFile)}`
+    );
     ffmpeg(inputFile)
       .audioCodec('libmp3lame')
       .audioBitrate('64k')
@@ -156,7 +172,7 @@ function createChunk(inputFile, outputFile, startTime, duration) {
   });
 }
 
-// Transcribes a single audio chunk using OpenAI's Whisper model.
+// Transcribes a single audio chunk via OpenAI Whisper
 async function transcribeSingleChunk(chunkPath) {
   logger.info(`Transcribing chunk: ${path.basename(chunkPath)}`);
   try {
@@ -173,11 +189,13 @@ async function transcribeSingleChunk(chunkPath) {
   }
 }
 
-// Slices the audio file into 5-minute chunks and transcribes them in parallel.
+// Slices the audio file into 5-minute chunks and transcribes them in parallel
 async function chunkAndTranscribeAudioParallel(filePath) {
-  logger.info(`Starting audio transcription in parallel chunks for: ${path.basename(filePath)}`);
+  logger.info(
+    `Starting audio transcription in parallel chunks for: ${path.basename(filePath)}`
+  );
 
-  // Retrieve total duration of the audio file
+  // Retrieve total duration
   const metadata = await new Promise((resolve, reject) => {
     ffmpeg.ffprobe(filePath, (err, data) => {
       if (err) return reject(err);
@@ -190,13 +208,14 @@ async function chunkAndTranscribeAudioParallel(filePath) {
   const chunkDurationSec = 300; // 5 minutes
   const numChunks = Math.ceil(totalDuration / chunkDurationSec);
   const chunks = [];
+
   for (let i = 0; i < numChunks; i++) {
     const startTime = i * chunkDurationSec;
     const thisChunkDuration = Math.min(chunkDurationSec, totalDuration - startTime);
     chunks.push({ chunkIndex: i, startTime, duration: thisChunkDuration });
   }
 
-  // Limit concurrent transcription tasks (max 10 at a time)
+  // Limit concurrency to 10
   const limit = pLimit(10);
   const partialTranscripts = await Promise.all(
     chunks.map((chunk) =>
@@ -208,20 +227,27 @@ async function chunkAndTranscribeAudioParallel(filePath) {
           await fs.promises.unlink(chunkFilePath);
           logger.info(`Deleted chunk file: ${path.basename(chunkFilePath)}`);
         } catch (err) {
-          logger.error(`Error deleting chunk file ${path.basename(chunkFilePath)}: ${err.message}`);
+          logger.error(
+            `Error deleting chunk file ${path.basename(chunkFilePath)}: ${err.message}`
+          );
         }
         return { index: chunk.chunkIndex, text: transcript };
       })
     )
   );
 
-  // Sort transcripts by chunk index to preserve order and return the concatenated result.
+  // Sort transcripts by chunk index, concatenate
   partialTranscripts.sort((a, b) => a.index - b.index);
   return partialTranscripts.map((pt) => pt.text).join('\n').trim();
 }
 
-// Generates a summary using OpenAI Chat Completions API.
-async function generateSummary(transcriptionText, instruction = '', contextFilePath = null, generalInfo = null) {
+// Generates a summary from transcribed text
+async function generateSummary(
+  transcriptionText,
+  instruction = '',
+  contextFilePath = null,
+  generalInfo = null
+) {
   let systemPrompt = '';
   try {
     systemPrompt = fs.readFileSync(path.join(__dirname, 'systemPrompt.txt'), 'utf8');
@@ -233,14 +259,14 @@ async function generateSummary(transcriptionText, instruction = '', contextFileP
   logger.info('Preparing to generate summary from transcribed text');
 
   try {
-    // Read additional context if provided
+    // Read context if provided
     let contextContent = '';
     if (contextFilePath) {
       logger.info(`Reading additional context file: ${path.basename(contextFilePath)}`);
       contextContent = await readContextFile(contextFilePath);
     }
 
-    // Process general meeting information if provided
+    // Process general meeting info if provided
     let generalInfoContent = '';
     if (generalInfo) {
       try {
@@ -259,7 +285,7 @@ async function generateSummary(transcriptionText, instruction = '', contextFileP
       }
     }
 
-    // Build the messages for the Chat API.
+    // Build system/user messages
     const messages = [
       {
         role: 'system',
@@ -271,9 +297,11 @@ async function generateSummary(transcriptionText, instruction = '', contextFileP
       }
     ];
 
+    // Call OpenAI Chat
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o', // Replace with your desired model if needed.
+      // Keep 'gpt-4o' exactly as requested
+      model: 'gpt-4o',
       messages: messages
     });
 
@@ -285,23 +313,23 @@ async function generateSummary(transcriptionText, instruction = '', contextFileP
   }
 }
 
-// Set up Multer for handling file uploads
+// Multer config
 const upload = multer({
   storage,
   fileFilter,
   limits: {
     fileSize: 200 * 1024 * 1024, // 200MB
-    files: 2 // Maximum 2 files: audio and context
+    files: 2 // 1 audio + 1 context
   }
 });
 
-// Serve the index page
+// Serve index
 app.get('/', (req, res) => {
   logger.info('Serving index.html');
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Handle file uploads and processing
+// Upload + Process route
 app.post(
   '/upload',
   upload.fields([
@@ -321,14 +349,14 @@ app.post(
       const audioFilePath = req.files.audio[0].path;
       const contextFile = req.files.context ? req.files.context[0] : null;
       const instruction = req.body.instruction;
-      const generalInfo = req.body.generalInfo; // General meeting details
+      const generalInfo = req.body.generalInfo;
 
       if (!instruction) {
         logger.warn('Missing instruction in the request body');
         return res.status(400).json({ error: 'Instruction is required' });
       }
 
-      // Convert audio to MP3 if necessary (e.g. for m4a or webm)
+      // Convert audio to MP3 if .m4a or .webm
       let finalAudioPath = audioFilePath;
       if (req.files.audio[0].mimetype === 'audio/x-m4a') {
         const mp3Path = audioFilePath.replace(/\.m4a$/, '.mp3');
@@ -339,10 +367,10 @@ app.post(
         finalAudioPath = await convertToMp3(audioFilePath, mp3Path);
       }
 
-      // Transcribe the audio (in parallel chunks)
+      // Transcribe in parallel
       const transcriptionText = await chunkAndTranscribeAudioParallel(finalAudioPath);
 
-      // Generate summary using the transcription, instruction, context file, and general info.
+      // Summarize
       const summaryText = await generateSummary(
         transcriptionText,
         instruction,
@@ -350,16 +378,16 @@ app.post(
         generalInfo
       );
 
-      // Save summary to a file
-      const outputFilePath = path.join(__dirname, 'uploads', `summary-${Date.now()}.txt`);
+      // Save summary to /tmp (ephemeral storage)
+      const outputFilePath = path.join('/tmp', `summary-${Date.now()}.txt`);
       fs.writeFileSync(outputFilePath, summaryText);
       logger.info(`Summary file created: ${path.basename(outputFilePath)}`);
 
+      // Send JSON response
       res.json({
         message: 'Processing completed successfully',
         summary: summaryText,
-        summaryPath: outputFilePath,
-        downloadUrl: `/uploads/${path.basename(finalAudioPath)}`
+        summaryPath: outputFilePath
       });
     } catch (error) {
       logger.error(`Processing error: ${error.message}`);
@@ -368,7 +396,7 @@ app.post(
         details: error.message
       });
     } finally {
-      // Cleanup: delete uploaded and temporary files asynchronously.
+      // Cleanup uploaded files
       const cleanupFile = async (filePath) => {
         if (filePath) {
           try {
@@ -380,11 +408,12 @@ app.post(
         }
       };
 
-      // Delete original audio file
+      // Remove original audio file
       cleanupFile(req.files && req.files.audio ? req.files.audio[0].path : null);
-      // Delete context file if uploaded
+      // Remove context file if present
       cleanupFile(req.files && req.files.context ? req.files.context[0].path : null);
-      // Delete converted MP3 file if applicable
+
+      // Remove any auto-converted MP3 if we had an M4A or WebM
       if (
         req.files &&
         req.files.audio &&
@@ -398,7 +427,7 @@ app.post(
   }
 );
 
-// Global error handling middleware
+// Global error handler
 app.use((err, req, res, next) => {
   logger.error(`Unhandled error: ${err.message}`);
   if (err instanceof multer.MulterError) {
@@ -413,5 +442,5 @@ app.use((err, req, res, next) => {
   });
 });
 
-// NOTE: We have removed the app.listen() call since Netlify will invoke the exported app as a serverless function.
-module.exports = serverless(app);
+// Export for serverless: ESM style
+export const handler = serverless(app);
