@@ -38,7 +38,8 @@ logger.info('Static files middleware configured');
 // Configure storage and filename handling for uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const uploadDir = path.join(__dirname, 'uploads');
+    // Use /tmp/uploads as the upload directory in a serverless environment
+    const uploadDir = path.join('/tmp', 'uploads');
     try {
       if (!fs.existsSync(uploadDir)) {
         fs.mkdirSync(uploadDir, { recursive: true });
