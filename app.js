@@ -407,34 +407,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, '0.0.0.0', () => {
-//   logger.info(`Server running on port ${PORT}`);
-// });
-
-
-
 const PORT = process.env.PORT || 3000;
-
-// Start the Express server
-app.listen(PORT, '0.0.0.0', async () => {
+app.listen(PORT, '0.0.0.0', () => {
   logger.info(`Server running on port ${PORT}`);
-
-  try {
-    // Optionally set the authtoken if provided
-    if (process.env.NGROK_AUTH_TOKEN) {
-      await ngrok.authtoken(process.env.NGROK_AUTH_TOKEN);
-      logger.info('ngrok auth token set successfully.');
-    }
-
-    // Open an ngrok tunnel on the same port as your Express server
-    const url = await ngrok.connect({
-      addr: PORT,
-      // Optional: You can specify a region (e.g., 'eu', 'us', etc.)
-      region: process.env.NGROK_REGION || 'us'
-    });
-    logger.info(`ngrok tunnel established at: ${url}`);
-  } catch (error) {
-    logger.error(`Failed to establish ngrok tunnel: ${error.message}`);
-  }
 });
+
