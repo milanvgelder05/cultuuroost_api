@@ -1,13 +1,9 @@
 {
-  "name": "cultuuroost_api",
+  "name": "vergaderai",
   "version": "1.0.0",
-  "description": "-",
-  "main": "app.js",
-
-
+  "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Skipping tests...\" && exit 0"
+    "start": "node app.js"
   },
   "keywords": [
     "transcription",
