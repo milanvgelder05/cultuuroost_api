@@ -1,0 +1,76 @@
+<h1>Vergaderverslag</h1>
+
+<h2>1. ALGEMENE GEGEVENS</h2>
+<ul>
+    <li>Datum: 2025-02-05</li>
+    <li>Locatie: Online</li>
+    <li>Deelnemers: Mano, Pim, Erica</li>
+    <li>Afwezigen: Milan, Tijn, Fedde</li>
+    <li>Doel van het gesprek: Definitieve offerteaanpak maken</li>
+    <li>Vertrouwelijkheid: niet vertrouwelijk</li>
+</ul>
+
+<h2>2. INLEIDING</h2>
+<p>
+    Het hoofddoel van deze vergadering was het formuleren van een definitieve offerteaanpak voor de introductie van AI-toepassingen binnen de gemeente Ede. De context van het gesprek vond plaats tegen een achtergrond van toenemende verwachtingen over AI-adoptie en de noodzaak om gemeentelijke processen te versterken en innovatieve oplossingen te onderzoeken. Aangezien vorige actiepunten gericht waren op het oriënteren van mogelijke toepassingen en het evalueren van initiële feedback van geïnteresseerde groepen binnen de gemeente, werden deze in grote lijnen als voltooid beschouwd. De bredere implicaties richten zich op het strategisch benutten van AI om efficiënter te werken en gemeente-overschrijdend impact te realiseren.
+</p>
+
+<h2>3. HOOFDPUNTEN</h2>
+<ul>
+    <li>
+        <strong>Echo probleem en introducties:</strong> De vergadering werd gestart met technische problemen zoals echo's, maar werd snel hersteld. De deelnemers introduceerden hun achtergrond en verbinding met AI en het belang voor hun respectieve gebieden.
+    </li>
+    <li>
+        <strong>Lerende organisatie aanpak:</strong> Erica beschreef de stappen die al binnen de gemeente Ede waren gezet om AI te integreren, met een focus op een lerende organisatie om AI toegankelijk te maken voor alle medewerkers.
+    </li>
+    <li>
+        <strong>Fysieke en digitale toezicht binnen taken:</strong> Er werd gesproken over het belang van het koppelen van digitale en persoonlijke interacties in leertrajecten, met specifieke aandacht voor hoe AI kan worden ingezet zonder de menselijke rol te verminderen.
+    </li>
+    <li>
+        <strong>Gebruik van AI voor kostenbesparing en ondersteuning:</strong> De gemeente is in een fase van bezuinigingen, waarbij AI als een potentiële oplossing wordt beschouwd voor operationele efficiëntie zonder het verlies van menselijke waarden.
+    </li>
+    <li>
+        <strong>Offerte ontwikkeling en segmentatie:</strong> Discussie over het ontwikkelen van een passende offerte die rekening houdt met de behoeften en budgettaire beperkingen van de gemeente Ede.
+    </li>
+</ul>
+
+<h3>Niet-besproken onderwerpen</h3>
+<ul>
+    <li>Specifieke case studies of voorbeelden van andere gemeenten die AI implementeren.</li>
+    <li>De potentiële rol van publieke outreach bij het versterken van AI-initiatieven.</li>
+</ul>
+
+<h2>4. ACTIEPUNTEN EN BESLUITEN</h2>
+<h3>Actiepunten:</h3>
+<ul>
+    <li>Erica onderzoekt de implementatietijdlijn voor het nieuwe LMS-systeem dat verwachte ondersteuning biedt voor AI-training (deadline: eind maart 2025).</li>
+    <li>Handvaten ontwikkelen voor HR om AI-adoptie te faciliteren en integreren met personeelsprocessen (verantwoordelijk: Mano en Pim, deadline: eind februari 2025).</li>
+</ul>
+
+<h3>Besluiten:</h3>
+<ul>
+    <li>Het project zal zich splitsen in twee hoofdtrajecten: een gericht op HRM en een breder educatief initiatief gericht op alle medewerkers van de gemeente.</li>
+    <li>Het huidige budgetvoorstel wordt herzien om beter binnen de geschetste financiële grenzen te passen en om gelijktijdig de gewenste output te leveren.</li>
+</ul>
+
+<h2>5. AFSLUITING</h2>
+<ul>
+    <li>De vergadering concludeert met een gedeeld enthousiasme om verder te gaan in het benutten van AI binnen de gemeente Ede. Belangrijk is de geplande samenwerking om vrijwilligheid in verandering te maximaliseren.</li>
+    <li>Volgende stappen omvatten het aanpassen van de offerte en de voorbereiding van initiaties voor de HR-gerichte AI-aanpak.</li>
+    <li>De volgende bijeenkomst wordt op 2025-03-05 gehouden om de voortgang te evalueren en verdere implementaties te beoordelen.</li>
+</ul>
+
+<h2>6. AI AANBEVELINGEN EN REFLECTIES</h2>
+<p>
+    Het gesprek toonde aan dat er aanzienlijke mogelijkheden zijn voor de gemeente Ede om AI te implementeren als een onderdeel van hun strategische routekaart naar efficiëntieverbeteringen.
+</p>
+<ul>
+    <li>Een niet besproken maar relevant onderwerp is de gemeenschappelijkheid en datadeling tussen verschillende gemeenten omtrent AI-toepassingen.</li>
+    <li>Het kan nuttig zijn om externe stakeholders, zoals technologiepartners en academische instellingen, te betrekken voor verder inzicht in AI-toepassingen.</li>
+    <li>Risico's zoals de overmatige afhankelijkheid van AI moeten zorgvuldig worden beheerd om publieke en interne acceptatie te waarborgen.</li>
+    <li>Verbanden met andere projecten, zoals gemeentelijke digitaliseringsinitiatieven, kunnen benut worden om AI-projecten te versterken.</li>
+    <li>Efficiëntie van vervolgstappen kan worden verbeterd door modulaire soorte contacten binnen het HR segment.</li>
+</ul>
+<p>
+    De implementatie en acceptatie van AI vereisen voortdurende evaluatie en aanpassing. Best practices zouden kunnen inhouden dat kleine, meetbare successen worden geboekt om bredere buy-in te garanderen voor verdere adoptie.
+</p>

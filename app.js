@@ -279,6 +279,22 @@ async function generateSummary(transcriptionText, instruction = '', contextFileP
   }
 }
 
+async function fineTuneSummary(transcriptionText, instruction = '', firstSummary, prompt, contextFilePath = null, generalInfo = null) {
+
+  const messages = [
+    {
+      role: 'system',
+      content: `${systemPrompt}\nGebruik de volgende algemene gegevens: ${generalInfoContent}\nGebruik deze context (indien aanwezig): ${contextContent}. Genereer in HTML zonder onnodige tags bovenaan(gebruik HTML dus alleen voor de kopjes etc.) en zonder '''html bovenaan`
+    },
+    {
+      role: 'user',
+      content: `Hier is de transcriptie. Maak een verslag:\n${transcriptionText}`
+    }
+  ];
+
+
+}
+
 // Set up Multer for handling file uploads
 const upload = multer({
   storage,
@@ -407,7 +423,34 @@ app.use((err, req, res, next) => {
   });
 });
 
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, '0.0.0.0', () => {
+//   logger.info(`Server running on port ${PORT}`);
+// });
+
+
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
+
+// Start the Express server
+app.listen(PORT, '0.0.0.0', async () => {
   logger.info(`Server running on port ${PORT}`);
+
+  try {
+    // Optionally set the authtoken if provided
+    if (process.env.NGROK_AUTH_TOKEN) {
+      await ngrok.authtoken(process.env.NGROK_AUTH_TOKEN);
+      logger.info('ngrok auth token set successfully.');
+    }
+
+    // Open an ngrok tunnel on the same port as your Express server
+    const url = await ngrok.connect({
+      addr: PORT,
+      // Optional: You can specify a region (e.g., 'eu', 'us', etc.)
+      region: process.env.NGROK_REGION || 'us'
+    });
+    logger.info(`ngrok tunnel established at: ${url}`);
+  } catch (error) {
+    logger.error(`Failed to establish ngrok tunnel: ${error.message}`);
+  }
 });

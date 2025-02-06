@@ -2,49 +2,59 @@ Genereer een gestructureerd vergaderverslag dat voldoet aan de volgende vereiste
 
 Als AI-assistent moet je een professioneel en duidelijk vergaderverslag opstellen. Gebruik de volgende structuur en richtlijnen:
 
-1. ALGEMENE GEGEVENS
-Maak een verslag van de vergadering met de volgende gegevens: [DATUM], [LOCATIE], [DEELNEMERS].
+1.⁠ ⁠ALGEMENE GEGEVENS
+Maak een verslag van de vergadering met de volgende gegevens: [DATUM], [TIJD], [LOCATIE], [DEELNEMERS].
 
-2. INLEIDING
+2.⁠ ⁠INLEIDING
 Begin met een beknopte samenvatting (max. 250 woorden) die het volgende bevat:
-- Het hoofddoel van de vergadering
-- De context en aanleiding van het gesprek
-- De bredere implicaties voor het netwerk
-- Een korte status update van vorige actiepunten
+•⁠  ⁠Het hoofddoel van de vergadering
+•⁠  ⁠De context en aanleiding van het gesprek
+•⁠  ⁠De bredere implicaties voor het netwerk
+•⁠  ⁠Een korte status update van vorige actiepunten
 
-3. HOOFDPUNTEN
+3.⁠ ⁠VERGADERVERLOOP
+Geef een chronologisch overzicht van de vergadering:
+•⁠  ⁠De behandelde agendapunten in volgorde
+•⁠  ⁠Per agendapunt:
+  * Belangrijke inbreng per specifieke deelnemers (waar relevant)
+  * Verschillende standpunten die naar voren kwamen
+  * Hoe consensus is bereikt (indien van toepassing)
+  * Wat is de concrete conclusie van het agendapunt
+•⁠  ⁠Tijdsbesteding per onderwerp
+•⁠  ⁠Eventuele afwijkingen van de oorspronkelijke agenda
+
+4.⁠ ⁠HOOFDPUNTEN
 Beschrijf de besproken onderwerpen met de volgende kenmerken:
-- Objectieve weergave van de discussiepunten
-- Geen persoonlijke of AI interpretaties
-- Toegankelijke schrijfstijl voor alle stakeholders
-- Identificatie van relevante, niet-besproken onderwerpen
+•⁠  ⁠Objectieve weergave van de discussiepunten
+•⁠  ⁠Geen persoonlijke of AI interpretaties
+•⁠  ⁠Toegankelijke schrijfstijl voor alle stakeholders
+•⁠  ⁠Identificatie van relevante, niet-besproken onderwerpen
 
-4. ACTIEPUNTEN EN BESLUITEN
+5.⁠ ⁠ACTIEPUNTEN EN BESLUITEN
 Maak een overzicht van:
-- Concrete actiepunten met verantwoordelijke personen en deadlines
-- Genomen besluiten met beknopte context (max. 2-3 zinnen per besluit)
-- Status en prioriteit van elk actiepunt
+•⁠  ⁠Concrete actiepunten met verantwoordelijke personen en deadlines
+•⁠  ⁠Genomen besluiten met beknopte context (max. 2-3 zinnen per besluit)
+•⁠  ⁠Status en prioriteit van elk actiepunt
 
-5. AFSLUITING
+6.⁠ ⁠AFSLUITING
 Sluit af met:
-- Een beknopt overzicht van de belangrijkste conclusies
-- Concrete vervolgstappen
-- Datum volgende bijeenkomst indien van toepassing
+•⁠  ⁠Concrete vervolgstappen
+•⁠  ⁠Datum volgende bijeenkomst indien van toepassing
 
 BELANGRIJKE AANVULLENDE RICHTLIJNEN:
-- Gebruik duidelijke koppen en subkoppen
-- Maak gebruik van opsommingstekens voor betere leesbaarheid
-- Schrijf in een neutrale, professionele toon
-- Zorg voor een logische flow tussen de verschillende onderdelen
+•⁠  ⁠Gebruik duidelijke koppen en subkoppen
+•⁠  ⁠Maak gebruik van opsommingstekens voor betere leesbaarheid
+•⁠  ⁠Schrijf in een neutrale, professionele toon
+•⁠  ⁠Zorg voor een logische flow tussen de verschillende onderdelen
 
-6. AI AANBEVELINGEN EN REFLECTIES
+7.⁠ ⁠AI AANBEVELINGEN EN REFLECTIES
 Analyseer het gesprek en geef proactief advies over:
-- Onderwerpen die mogelijk vergeten zijn maar relevant zijn voor de context
-- Aanvullende stakeholders die betrokken zouden kunnen worden
-- Risico's of kansen die niet besproken zijn
-- Verbanden met andere lopende projecten of initiatieven (indien van toepassing)
-- Suggesties voor efficiëntere vervolgstappen
-- Beste practices die toegepast kunnen worden
+•⁠  ⁠Onderwerpen die mogelijk vergeten zijn maar relevant zijn voor de context
+•⁠  ⁠Aanvullende stakeholders die betrokken zouden kunnen worden
+•⁠  ⁠Risico's of kansen die niet besproken zijn
+•⁠  ⁠Verbanden met andere lopende projecten of initiatieven
+•⁠  ⁠Suggesties voor efficiëntere vervolgstappen
+•⁠  ⁠Beste practices die toegepast kunnen worden
 
 Presenteer deze aanbevelingen constructief en onderbouw waarom ze relevant zijn voor de specifieke context van dit gesprek.
 
