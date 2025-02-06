@@ -1,0 +1,75 @@
+# Vergaderverslag
+
+## ALGEMENE GEGEVENS
+- **Datum:** 2025-02-06
+- **Tijd:**  [TIJD]
+- **Locatie:** [LOCATIE]
+- **Deelnemers:** [DEELNEMERS]
+- **Afwezigen:** [AFWEZIGEN]
+- **Doel van het gesprek:** Voorbereiding op presentatie en ontwikkeling van use cases voor de sessie op 21ste februari.
+- **Vertrouwelijkheid:** Intern
+
+## INLEIDING
+Het hoofddoel van de vergadering was het bepalen van de voorbereidende stappen voor de sessie op 21 februari, waarin enkele use cases gepresenteerd en verfijnd zullen worden. De aanleiding hiervoor is de wens om innovatieve oplossingen ook intern toe te passen, zoals we deze bij klanten implementeren. Dit heeft bredere implicaties voor het netwerk, omdat het ons in staat stelt om best practices te demonstreren en te evalueren binnen onze eigen organisatie. De vorige actiepunten omvatten het vaststellen van een lijst met potentiële use cases, waarvan nu drie ter illustratie en verfijning worden geselecteerd.
+
+## VERGADERVERLOOP
+
+### Agendapunt 1: Planning en Voorbereiding van Use Cases
+- **Inbreng Deelnemers:** 
+  - [DEELNEMER A] benadrukte het belang van een gedetailleerde voorbereiding.
+  - Esther stemde in met de voorgestelde aanpak.
+- **Standpunten:**
+  - Het is cruciaal om pijnpunten te identificeren om relevante oplossingen voor te stellen.
+  - Een consensus werd bereikt over het benoemen van 1 tot 3 use cases voor diepgaande voorbereiding.
+- **Conclusie:** Projectteams moeten snel schakelen tussen de identificatie van problemen en het conceptualiseren van oplossingen.
+- **Tijdsbesteding:** 20 minuten
+
+### Agendapunt 2: Identificatie en Selectie van Use Cases
+- **Inbreng Deelnemers:**
+  - Pim verwees naar het eerder besproken referentiekader voor use cases.
+  - Milan en Tijn gaven aan dat ze verdere vragen mogelijk later zouden hebben.
+- **Standpunten:**
+  - Initiële focus op verslaglegging en samenvatten als twee kernuse cases. 
+- **Conclusie:** Twee concrete use cases worden voorbereid en gepresenteerd op de 21ste.
+- **Tijdsbesteding:** 15 minuten
+
+### Afwijkingen van de oorspronkelijke agenda:
+- Geen afwijkingen gemeld.
+
+## HOOFDPUNTEN
+- **Discussiepunten:** Er was een intensieve discussie over hoe we AI-tools kunnen inzetten om interne processen te verbeteren. De focus lag op twee specifieke use cases.
+- **Relevante Niet-Besproken Onderwerpen:** Hoe de gekozen use cases zich verhouden tot andere lopende projecten binnen de organisatie.
+
+## ACTIEPUNTEN EN BESLUITEN
+
+### Actiepunten
+1. **Voorbereiding van Use Cases:**
+   - **Verantwoordelijke:** Team X
+   - **Deadline:** Voor de sessie op 21 februari
+   - **Status en Prioriteit:** Hoog
+
+2. **Ontwikkeling van presentatiematerialen:**
+   - **Verantwoordelijke:** [PERSOON A]
+   - **Deadline:** 15 februari
+   - **Status en Prioriteit:** Hoog
+
+### Besluiten
+- **Gebruik van referentiekader voor afstemming met Esther:** 
+  Concensus bereikt dat Esther's goedkeuring de methodologie versterkt.
+- **Keuze om klein te beginnen:** 
+  Focus op concreet en schaalbaar maken van de use cases.
+
+## AFSLUITING
+
+- **Vervolgstappen:** Verdere finetuning van gekozen use cases en voorbereiding van presentatie.
+- **Datum volgende bijeenkomst:** 14 februari voor laatste check-in voor de sessie op de 21ste.
+
+## AI AANBEVELINGEN EN REFLECTIES
+- **Vergeten Onderwerpen:** Mogelijke koppeling van de huidige use cases aan bestaande projecten om overlap te vermijden en synergie te bevorderen.
+- **Aanvullende Stakeholders:** Betrekking van de marketingafdeling om potentiële externe communicatiekasruimte af te wegen.
+- **Risico's of Kansen:** Noodzaak van middelen kan onderschat worden; evaluatie van beschikbaarheid van relevante experts noodzakelijk.
+- **Verbanden:** Inventariseer raakvlakken van de use cases met lopende klantprojecten voor kennisoverdracht en voortgang.
+- **Efficiënte Vervolgstappen:** Duidelijke roadmap voor integratie van feedback na de sessie op 21 februari.
+- **Beste Practices:** Het gebruik van iteratieve feedbackloops versnelt de doorontwikkeling van de use cases.
+
+Deze aanbevelingen zijn cruciaal voor het waarborgen van een naadloze integratie van de nieuwe processen en het waarborgen van bedrijfsoverkoepelende voordelen.

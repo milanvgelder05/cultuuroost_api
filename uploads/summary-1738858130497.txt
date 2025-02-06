@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vergaderverslag 2025-02-11</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2, h3 {
+            color: #2E5EAA;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Vergaderverslag</h1>
+
+<h2>Algemene Gegevens</h2>
+<ul>
+    <li>Datum: 2025-02-11</li>
+    <li>Tijd: 10:00 - 11:30</li>
+    <li>Locatie: Vergaderzaal A, Kantoor XYZ</li>
+    <li>Deelnemers: Esther, Pim, Milan, Tijn</li>
+    <li>Afwezigen: Geen</li>
+    <li>Doel van het gesprek: Bepalen van use cases voor aankomende sessie</li>
+</ul>
+
+<h2>Inleiding</h2>
+<p>
+    Het hoofddoel van deze vergadering was om te bespreken welke use cases zouden worden voorbereid voor de sessie op de 21ste. Het gesprek vond plaats in de context van het doorontwikkelen van onze interne AI-tools om beter aan de klantbehoeften te voldoen. De bredere implicatie voor het netwerk is dat betere en meer gerichte AI-oplossingen de klanttevredenheid kunnen verhogen en de inzetbaarheid van ons team verbeteren. De vorige actiepunten omvatten het opstellen van een referentiekader voor de use cases en deze zijn met succes voltooid.
+</p>
+
+<h2>Vergaderverloop</h2>
+<h3>Agendapunt 1: Bepalen van use cases</h3>
+<ul>
+    <li>Inbreng:
+        <ul>
+            <li>Esther benadrukte het belang van concreet zijn met de voorbereiding van de use cases.</li>
+            <li>Pim stelde voor om de sessie op de 21ste te richten op maximaal drie use cases.</li>
+        </ul>
+    </li>
+    <li>Standpunten:
+        <ul>
+            <li>Overeenstemming om klein te beginnen en te focussen op de belangrijkste cases.</li>
+        </ul>
+    </li>
+    <li>Consensus en Conclusie:
+        <ul>
+            <li>Besluit om te focussen op verslaglegging en samenvatten als de twee kern use cases voor verdere ontwikkeling.</li>
+        </ul>
+    </li>
+    <li>Tijdsbesteding: 45 minuten</li>
+    <li>Afwijkingen: Geen significante afwijkingen van de originele agenda.</li>
+</ul>
+
+<h2>Hoofdpunten</h2>
+<ul>
+    <li>De groep was het erover eens dat het belangrijk is om specifiek en gedetailleerd aan de slag te gaan met de use cases.</li>
+    <li>Focus op het gebruik van AI om pijnpunten op te lossen en toegevoegde waarde voor klanten te realiseren.</li>
+    <li>Het idee is om tegen de volgende bijeenkomst concrete, half-voltooide prototypes klaar te hebben.</li>
+    <li>Geen nieuwe onderwerpen besproken buiten de geplande use case discussies.</li>
+</ul>
+
+<h2>Actiepunten en Besluiten</h2>
+<ul>
+    <li>Actiepunt: Voorbereiding van de use cases 'verslaglegging' en 'samenvatten'. <br>Verantwoordelijk: Esther en Pim <br>Deadline: 18 februari 2025 <br>Status: Hoog</li>
+    <li>Besluit: Er zal gefocust worden op twee primaire use cases om te testen tijdens de sessie op de 21ste. Deze beslissing was unaniem geaccepteerd.</li>
+</ul>
+
+<h2>Afsluiting</h2>
+<ul>
+    <li>Vervolgstappen: 
+        <ul>
+            <li>Gebruikcases voorbereiden en relevante data verzamelen voor de volgende sessie.</li>
+        </ul>
+    </li>
+    <li>Datum volgende bijeenkomst: 21 februari 2025</li>
+</ul>
+
+<h2>AI Aanbevelingen en Reflecties</h2>
+<ul>
+    <li><strong>Vergeten Onderwerpen:</strong> Het kan nuttig zijn om na te denken over de implementatie van AI in productieomgevingen, zodat de use cases bredere toepassingen krijgen.</li>
+    <li><strong>Aanvullende Stakeholders:</strong> Overweeg het betrekken van IT-specialisten voor technische haalbaarheid en risico-evaluaties.</li>
+    <li><strong>Risico's of Kansen:</strong> Mogelijke weerstand van klanten tegen AI-gebaseerde oplossingen moet worden beoordeeld.</li>
+    <li><strong>Verbanden met andere Projecten:</strong> Overweeg samenwerkingsverbanden met andere innovatieve projecten binnen het netwerk.</li>
+    <li><strong>Efficiëntie Aanbevelingen:</strong> Stroomlijn future meetings met vooraf ingevulde agendapunten om discussies efficiënt te structureren.</li>
+    <li><strong>Beste Practises:</strong> Gebruik sprints en iteratieve cycles voor continue verbetering van de AI use cases.</li>
+</ul>
+
+</body>
+</html>

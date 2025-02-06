@@ -1,157 +1,145 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Audio Transcriptie - CultuurOost</title>
-    <!-- Verwijs naar je nieuwe style.css -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <img src="images/CultuurOostLogo.png" alt="CultuurOost Logo" class="logo" />
-      </header>
 
-      <main class="main-content">
-        <h1 class="title">CO Vergader AI</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audio Transcriptie - CultuurOost</title>
+  <!-- Verwijs naar je nieuwe style.css -->
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-        <!-- Stap 1: Algemene Gegevens -->
-        <section id="step1" class="step visible">
-          <h2>Algemene Gegevens</h2>
-          <form id="generalForm">
-            <div class="form-group">
-              <label for="meetingDate">Datum:</label>
-              <input type="date" id="meetingDate" name="meetingDate" required />
-            </div>
-            <div class="form-group">
-              <label for="meetingLocation">Locatie:</label>
-              <input
-                type="text"
-                id="meetingLocation"
-                name="meetingLocation"
-                placeholder="Plaats en type (online/fysiek)"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="participants">Deelnemers:</label>
-              <textarea
-                id="participants"
-                name="participants"
-                placeholder="Namen, functies, en eventuele plaatsnaam"
-                required
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="absentees">Afwezigen:</label>
-              <textarea
-                id="absentees"
-                name="absentees"
-                placeholder="Genodigden die niet aanwezig waren"
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="meetingPurpose">Doel van het gesprek:</label>
-              <textarea
-                id="meetingPurpose"
-                name="meetingPurpose"
-                placeholder="Bijv. informeren, besluitvorming"
-                required
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="confidentiality">Vertrouwelijkheid:</label>
-              <textarea
-                id="confidentiality"
-                name="confidentiality"
-                placeholder="Bijv. vertrouwelijk, wie toegang heeft"
-                required
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="contextFile" class="file-label">
-                Kies een optioneel contextbestand (PDF of Word):
-              </label>
-              <input
-                type="file"
-                id="contextFile"
-                name="context"
-                accept=".pdf,.doc,.docx"
-                class="file-input"
-              />
-            </div>
-            <button type="button" id="nextButton" class="submit-button">
-              <span>Volgende</span>
-            </button>
-          </form>
-        </section>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="images/CultuurOostLogo.png" alt="CultuurOost Logo" class="logo" />
+    </header>
 
-        <!-- Stap 2: Audio Opname / Upload -->
-        <section id="step2" class="step hidden">
-          <h2>Audio Opname / Upload</h2>
-          <div class="recording-controls">
-            <button id="recordButton" class="submit-button">
-              <span>Start Opname</span>
-            </button>
-            <div id="recordingStatus" style="display: none; margin-top: 1rem; text-align: center;">
-              Opname gestart: <span id="recordingTime">00:00</span>
-            </div>
+    <main class="main-content">
+      <h1 class="title">CO Vergader AI</h1>
+
+      <!-- Stap 1: Algemene Gegevens -->
+      <section id="step1" class="step visible">
+        <h2>Algemene Gegevens</h2>
+        <form id="generalForm">
+          <div class="form-group">
+            <label for="meetingDate">Datum:</label>
+            <input type="date" id="meetingDate" name="meetingDate" required />
+          </div>
+          <div class="form-group">
+            <label for="meetingLocation">Locatie:</label>
+            <input type="text" id="meetingLocation" name="meetingLocation" placeholder="Plaats en type (online/fysiek)"
+              required />
+          </div>
+          <div class="form-group">
+            <label for="participants">Deelnemers:</label>
+            <textarea id="participants" name="participants" placeholder="Namen, functies, en eventuele plaatsnaam"
+              required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="absentees">Afwezigen:</label>
+            <textarea id="absentees" name="absentees" placeholder="Genodigden die niet aanwezig waren"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="meetingPurpose">Doel van het gesprek:</label>
+            <textarea id="meetingPurpose" name="meetingPurpose" placeholder="Bijv. informeren, besluitvorming"
+              required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="confidentiality">Vertrouwelijkheid:</label>
+            <textarea id="confidentiality" name="confidentiality" placeholder="Bijv. vertrouwelijk, wie toegang heeft"
+              required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="contextFile" class="file-label">
+              Kies een optioneel contextbestand (PDF of Word):
+            </label>
+            <input type="file" id="contextFile" name="context" accept=".pdf,.doc,.docx" class="file-input" />
+          </div>
+          <button type="button" id="nextButton" class="submit-button">
+            <span>Volgende</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- Stap 2: Audio Opname / Upload -->
+      <section id="step2" class="step hidden">
+        <h2>Audio Opname / Upload</h2>
+        <div class="recording-controls">
+          <button id="recordButton" class="submit-button">
+            <span>Start Opname</span>
+          </button>
+          <div id="recordingStatus" style="display: none; margin-top: 1rem; text-align: center;">
+            Opname gestart: <span id="recordingTime">00:00</span>
+          </div>
+        </div>
+
+        <form id="uploadForm" class="upload-form">
+          <div class="form-group">
+            <label for="audioFile" class="file-label">
+              Kies een audiobestand of gebruik de opname:
+            </label>
+            <input type="file" id="audioFile" name="audio" accept=".mp3,.wav,.mp4,.m4a,.webm" class="file-input"
+              required />
           </div>
 
-          <form id="uploadForm" class="upload-form">
-            <div class="form-group">
-              <label for="audioFile" class="file-label">
-                Kies een audiobestand of gebruik de opname:
-              </label>
-              <input
-                type="file"
-                id="audioFile"
-                name="audio"
-                accept=".mp3,.wav,.mp4,.m4a,.webm"
-                class="file-input"
-                required
-              />
-            </div>
+          <!-- Verborgen instructie met placeholderwaarde -->
+          <input type="hidden" id="instruction" name="instruction" value="placeholder instructie" />
 
-            <!-- Verborgen instructie met placeholderwaarde -->
-            <input type="hidden" id="instruction" name="instruction" value="placeholder instructie" />
+          <!-- Verborgen input voor de algemene gegevens (wordt via JS gevuld) -->
+          <input type="hidden" id="generalInfo" name="generalInfo" value="" />
 
-            <!-- Verborgen input voor de algemene gegevens (wordt via JS gevuld) -->
-            <input type="hidden" id="generalInfo" name="generalInfo" value="" />
+          <button type="submit" class="submit-button">
+            <span>Upload &amp; Verwerk</span>
+          </button>
+        </form>
 
-            <button type="submit" class="submit-button">
-              <span>Upload &amp; Verwerk</span>
+        <div id="progress" class="progress" aria-live="polite" style="display:none;">
+          <p>Verwerken... Even geduld alstublieft.</p>
+        </div>
+
+        <div id="error" class="error-message" style="display:none;"></div>
+      </section>
+
+      <!-- Stap 3: Samenvatting (het gegenereerde verslag) -->
+      <section id="step3" class="step hidden">
+        <h2>Samenvatting</h2>
+        <div id="summary-content" class="summary-text">
+          <!-- AI-generated summary -->
+        </div>
+        <div id="summary-buttons" class="button-group">
+          <button id="copyButton" class="submit-button">
+            <span>Kopieer Tekst</span>
+          </button>
+          <button id="refineButton" class="submit-button">
+            <span>Verfijn Samenvatting</span>
+          </button>
+        </div>
+
+        <!-- New refinement section -->
+        <div id="refinement-section" style="display:none;">
+          <h3>Verfijn je Samenvatting</h3>
+          <textarea id="refinementPrompt" rows="4"
+            placeholder="Geef instructies voor aanpassingen aan de samenvatting"></textarea>
+          <div class="button-group">
+            <button id="submitRefinementButton" class="submit-button">
+              <span>Verstuur Verfijning</span>
             </button>
-          </form>
-
-          <div id="progress" class="progress" aria-live="polite" style="display:none;">
-            <p>Verwerken... Even geduld alstublieft.</p>
           </div>
-
-          <div id="error" class="error-message" style="display:none;"></div>
-        </section>
-
-        <!-- Stap 3: Samenvatting (het gegenereerde verslag) -->
-        <section id="step3" class="step hidden">
-          <h2>Samenvatting</h2>
-          <div id="summary-content" class="summary-text">
-            <!-- Hier komt de AI-samenvatting in -->
+          <div id="refinement-progress" class="progress" style="display:none;">
+            <p>Verwerken verfijning... Even geduld</p>
           </div>
-          <div id="summary-buttons" class="button-group">
-            <button id="copyButton" class="submit-button">
-              <span>Kopieer Tekst</span>
-            </button>
-          </div>
-        </section>
-      </main>
+        </div>
+      </section>
+    </main>
 
-      <footer class="footer">
-        <p>&copy; 2025 HumanAIze</p>
-      </footer>
-    </div>
+    <footer class="footer">
+      <p>&copy; 2025 HumanAIze</p>
+    </footer>
+  </div>
 
-    <!-- Externe script -->
-    <script src="script.js"></script>
-  </body>
+  <!-- Externe script -->
+  <script src="script.js"></script>
+</body>
+
 </html>

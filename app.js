@@ -1,7 +1,3 @@
-/**************************************
- * app.js (of server.js)
- **************************************/
-
 require('dotenv').config();
 
 const express = require('express');
@@ -12,7 +8,7 @@ const OpenAI = require('openai');
 const ffmpeg = require('fluent-ffmpeg');
 const mammoth = require('mammoth');
 const PDFParser = require('pdf-parse');
-const ngrok = require('ngrok'); // (Currently not used)
+const ngrok = require('ngrok');
 const pLimit = require('p-limit');
 
 // Simple logger utility
@@ -23,6 +19,9 @@ const logger = {
 };
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -213,7 +212,7 @@ async function chunkAndTranscribeAudioParallel(filePath) {
 }
 
 // Generates a summary using OpenAI Chat Completions API.
-// The function now accepts an "instruction" parameter and uses it in the prompt.
+// **Updated**: now actually includes `instruction` in the prompt
 async function generateSummary(transcriptionText, instruction = '', contextFilePath = null, generalInfo = null) {
   let systemPrompt = '';
   try {
@@ -252,22 +251,21 @@ async function generateSummary(transcriptionText, instruction = '', contextFileP
       }
     }
 
-    // Build the messages for the Chat API. The instruction is included if provided.
-
+    // Include 'instruction' in the system prompt or user prompt
     const messages = [
       {
         role: 'system',
-        content: `${systemPrompt}\nGebruik de volgende algemene gegevens: ${generalInfoContent}\nGebruik deze context (indien aanwezig): ${contextContent}. Genereer in HTML zonder onnodige tags bovenaan(gebruik HTML dus alleen voor de kopjes etc.) en zonder '''html bovenaan`
+        content: `${systemPrompt}\nGebruik de volgende algemene gegevens: ${generalInfoContent}\nGebruik deze context (indien aanwezig): ${contextContent}.\nGenereer in HTML zonder onnodige tags bovenaan (alleen kopjes etc.) en zonder '''html bovenaan.\n\nExtra instructie: ${instruction}`
       },
       {
         role: 'user',
-        content: `Hier is de transcriptie. Maak een verslag:\n${transcriptionText}`
+        content: `Hier is de transcriptie. Maak een verslag:\n${transcriptionText}\nGenereer in HTML zonder onnodige tags bovenaan (alleen kopjes etc.) en zonder '''html bovenaan.\n`
       }
     ];
 
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o', // Replace with your desired model if needed.
+      model: 'gpt-4o', // Replace with your desired model if needed
       messages: messages
     });
 
@@ -279,20 +277,68 @@ async function generateSummary(transcriptionText, instruction = '', contextFileP
   }
 }
 
-async function fineTuneSummary(transcriptionText, instruction = '', firstSummary, prompt, contextFilePath = null, generalInfo = null) {
-
-  const messages = [
-    {
-      role: 'system',
-      content: `${systemPrompt}\nGebruik de volgende algemene gegevens: ${generalInfoContent}\nGebruik deze context (indien aanwezig): ${contextContent}. Genereer in HTML zonder onnodige tags bovenaan(gebruik HTML dus alleen voor de kopjes etc.) en zonder '''html bovenaan`
-    },
-    {
-      role: 'user',
-      content: `Hier is de transcriptie. Maak een verslag:\n${transcriptionText}`
+// Refinement function that uses the original transcript + first summary + a refinement prompt
+async function fineTuneSummary(transcriptionText, instruction = '', firstSummary, refinementPrompt, contextFilePath = null, generalInfo = null) {
+  try {
+    // Read system prompt
+    let systemPrompt = '';
+    try {
+      systemPrompt = fs.readFileSync(path.join(__dirname, 'systemPrompt.txt'), 'utf8');
+    } catch (error) {
+      logger.error(`Error reading system prompt: ${error.message}`);
+      throw new Error('System prompt not found');
     }
-  ];
 
+    // Read additional context if provided
+    let contextContent = '';
+    if (contextFilePath) {
+      logger.info(`Reading additional context file: ${path.basename(contextFilePath)}`);
+      contextContent = await readContextFile(contextFilePath);
+    }
 
+    // Process general meeting information
+    let generalInfoContent = '';
+    if (generalInfo) {
+      try {
+        const generalData = JSON.parse(generalInfo);
+        generalInfoContent =
+          `Algemene Gegevens:\n` +
+          `Datum: ${generalData.meetingDate}\n` +
+          `Locatie: ${generalData.meetingLocation}\n` +
+          `Deelnemers: ${generalData.participants}\n` +
+          `Afwezigen: ${generalData.absentees}\n` +
+          `Doel van het gesprek: ${generalData.meetingPurpose}\n` +
+          `Vertrouwelijkheid: ${generalData.confidentiality}\n`;
+      } catch (err) {
+        logger.warn('Error parsing generalInfo; using raw value');
+        generalInfoContent = generalInfo;
+      }
+    }
+
+    const messages = [
+      {
+        role: 'system',
+        content: `Je past samenvattingen aan op basis van de gewenste aanpassingen.\nGebruik eventueel: ${generalInfoContent}\nContext: ${contextContent}\nOpdracht: ${instruction}\nGenereer in HTML zonder onnodige tags bovenaan (alleen kopjes etc.) en zonder '''html bovenaan.\n`
+      },
+      {
+        role: 'user',
+        content: `Oorspronkelijke transcriptie:\n${transcriptionText}\n\nHuidige samenvatting:\n${firstSummary}\n\nGevraagde aanpassing:\n${refinementPrompt}\nGenereer in HTML zonder onnodige tags bovenaan (alleen kopjes etc.) en zonder '''html bovenaan.\n`
+      }
+    ];
+
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o',
+      messages: messages
+    });
+
+    logger.info('Summary refinement completed successfully');
+    return completion.choices[0].message.content;
+
+  } catch (error) {
+    logger.error(`Summary refinement error: ${error.message}`);
+    throw new Error('Failed to refine summary');
+  }
 }
 
 // Set up Multer for handling file uploads
@@ -338,7 +384,7 @@ app.post(
         return res.status(400).json({ error: 'Instruction is required' });
       }
 
-      // Convert audio to MP3 if necessary (e.g. for m4a or webm)
+      // Convert audio to MP3 if needed
       let finalAudioPath = audioFilePath;
       if (req.files.audio[0].mimetype === 'audio/x-m4a') {
         const mp3Path = audioFilePath.replace(/\.m4a$/, '.mp3');
@@ -349,10 +395,10 @@ app.post(
         finalAudioPath = await convertToMp3(audioFilePath, mp3Path);
       }
 
-      // Transcribe the audio (in parallel chunks)
+      // Transcribe in parallel chunks
       const transcriptionText = await chunkAndTranscribeAudioParallel(finalAudioPath);
 
-      // Generate summary using the transcription, instruction, context file, and general info.
+      // Generate summary
       const summaryText = await generateSummary(
         transcriptionText,
         instruction,
@@ -368,6 +414,7 @@ app.post(
       res.json({
         message: 'Processing completed successfully',
         summary: summaryText,
+        transcriptionText: transcriptionText,
         summaryPath: outputFilePath,
         downloadUrl: `/uploads/${path.basename(finalAudioPath)}`
       });
@@ -408,6 +455,28 @@ app.post(
   }
 );
 
+// Updated refine-summary endpoint to use fineTuneSummary
+app.post('/refine-summary', async (req, res) => {
+  try {
+    const { transcriptionText, firstSummary, refinementPrompt } = req.body;
+
+    // Roep hier de fineTuneSummary aan:
+    const refinedSummary = await fineTuneSummary(
+      transcriptionText,
+      '', // eventueel kun je ook refinementPrompt doorgeven als 'instruction'
+      firstSummary,
+      refinementPrompt,
+      null,  // geen context
+      null   // geen general info
+    );
+
+    res.json({ refinedSummary });
+  } catch (error) {
+    logger.error(`Summary refinement error: ${error.message}`);
+    res.status(500).json({ error: 'Failed to refine summary' });
+  }
+});
+
 // Global error handling middleware
 app.use((err, req, res, next) => {
   logger.error(`Unhandled error: ${err.message}`);
@@ -422,13 +491,6 @@ app.use((err, req, res, next) => {
     details: err.message || 'An unexpected error occurred'
   });
 });
-
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, '0.0.0.0', () => {
-//   logger.info(`Server running on port ${PORT}`);
-// });
-
-
 
 const PORT = process.env.PORT || 3000;
 
@@ -446,7 +508,6 @@ app.listen(PORT, '0.0.0.0', async () => {
     // Open an ngrok tunnel on the same port as your Express server
     const url = await ngrok.connect({
       addr: PORT,
-      // Optional: You can specify a region (e.g., 'eu', 'us', etc.)
       region: process.env.NGROK_REGION || 'us'
     });
     logger.info(`ngrok tunnel established at: ${url}`);

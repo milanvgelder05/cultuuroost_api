@@ -19,11 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const recordingTime = document.getElementById('recordingTime');
   const downloadLink = document.getElementById('downloadLink');
 
+  // Elementen voor verfijnstap
+  const refineButton = document.getElementById('refineButton');
+  const refinementSection = document.getElementById('refinement-section');
+  const refinementPrompt = document.getElementById('refinementPrompt');
+  const submitRefinementButton = document.getElementById('submitRefinementButton');
+  const refinementProgress = document.getElementById('refinement-progress');
+
   let mediaRecorder;
   let recordedChunks = [];
   let startTime;
   let timerInterval;
   let isRecording = false;
+  let globalTranscriptionText = '';
 
 
   // Functie voor opname-timer
@@ -168,6 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await response.json();
       summaryContent.innerHTML = result.summary;
 
+      globalTranscriptionText = result.transcriptionText;
+
       // Na succesvolle verwerking: Fade out stap 2 en fade in stap 3
       step2.classList.add('hidden');
       setTimeout(() => {
@@ -183,6 +193,57 @@ document.addEventListener('DOMContentLoaded', () => {
       error.style.display = 'block';
     } finally {
       progress.style.display = 'none';
+    }
+  });
+
+  refineButton.addEventListener('click', () => {
+    refinementSection.style.display = 'block';
+  });
+
+  // Submit refinement button click handler
+  submitRefinementButton.addEventListener('click', async () => {
+    const prompt = refinementPrompt.value.trim();
+    
+    if (!prompt) {
+      error.textContent = 'Geef een verfijningsinstructie op';
+      error.style.display = 'block';
+      return;
+    }
+
+    try {
+      refinementProgress.style.display = 'block';
+      error.style.display = 'none';
+
+      const response = await fetch('/refine-summary', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          transcriptionText: globalTranscriptionText,
+          firstSummary: summaryContent.innerHTML,
+          refinementPrompt: prompt
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Serverfout: ${response.status} - ${errorText}`);
+      }
+
+      const result = await response.json();
+      summaryContent.innerHTML = result.refinedSummary;
+      
+      // Optional: Clear refinement prompt after successful submission
+      refinementPrompt.value = '';
+      refinementSection.style.display = 'none';
+
+    } catch (err) {
+      console.error('Refinement error:', err);
+      error.textContent = err.message;
+      error.style.display = 'block';
+    } finally {
+      refinementProgress.style.display = 'none';
     }
   });
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vergaderverslag</title>
+</head>
+<body>
+
+<h1>Vergaderverslag</h1>
+
+<h2>1. Algemene Gegevens</h2>
+<ul>
+  <li>Datum: 2025-02-13</li>
+  <li>Tijd: Onbekend</li>
+  <li>Locatie: Onbekend</li>
+  <li>Deelnemers: Onbekend</li>
+</ul>
+
+<h2>2. Inleiding</h2>
+<p>Het hoofddoel van de vergadering was het voorbereiden van drie concrete use cases om op 21 februari te finetunen. Dit is belangrijk om ervoor te zorgen dat de organisatie zelf uitdrukkingsvormen toepast die bij haar klanten worden geadviseerd. Het plan is om vóór die tijd relevante informatie te verzamelen zodat een gedetailleerde implementatiestrategie kan worden uitgezet. De vorige actiepunten omvatten het bepalen van pijnpunten en verwachte resultaten voor de gekozen oplossingen.</p>
+
+<h2>3. Vergaderverloop</h2>
+
+<h3>Agendapunten</h3>
+<ol>
+  <li>Voorbereiden en kiezen van use cases</li>
+  <ul>
+    <li><strong>Deelnemersinbreng:</strong><br>
+      Esther is het eens met de gekozen aanpak. Pim gaf aan dat het belangrijk is om het gesprek van de vorige dag en de gerefereerde use cases te concretiseren.</li>
+    <li><strong>Standpunten:</strong><br>
+      De groep was het eens om klein te beginnen met twee hoofdthema's: verslaglegging en samenvatten.</li>
+    <li><strong>Conclusie:</strong><br>
+      Drie use cases worden voorbereid, met een focus op verslaglegging en samenvatten; de derde wordt voorlopig overgeslagen.</li>
+  </ul>
+  <li>Tijdsbesteding: Onbekend</li>
+  <li>Afwijkingen van agenda: Niets opgemerkt</li>
+</ol>
+
+<h2>4. Hoofdpunt</h2>
+<p>De discussie richtte zich op het identificeren van pijnpunten, het verwachte rendement en de beschrijving van de huidige gebruiksscenario's. Tevens werd besproken welke AI-oplossingen geschikt zijn voor de geïdentificeerde problemen. Er zijn verder geen nieuwe onderwerpen opgerakeld.</p>
+
+<h2>5. Actiepunten en Besluiten</h2>
+
+<h3>Actiepunten</h3>
+<ul>
+  <li>Identificeer de pijnpunten en documenteer deze - <strong>Verantwoordelijke:</strong> Onbekend - <strong>Deadline:</strong> Voor 21 februari</li>
+  <li>Definieer en beschrijf twee focus use cases: verslaglegging en samenvatten - <strong>Verantwoordelijke:</strong> Onbekend - <strong>Deadline:</strong> Voor 21 februari</li>
+</ul>
+
+<h3>Besluiten</h3>
+<ul>
+  <li>De focus ligt op twee concrete use cases: verslaglegging en samenvatten, vanwege hun belangrijke praktische toepassingen. Het beperken tot twee voorkomt overbelasting en draagt bij tot nauwkeurigheid.</li>
+</ul>
+
+<h2>6. Afsluiting</h2>
+<ul>
+  <li>Vervolgstappen omvatten het opnieuw bekijken van pijnpunten en opstellen van concrete use cases voor de bijeenkomst op 21 februari.</li>
+  <li>Datum volgende bijeenkomst: Gepland op 21 februari 2025</li>
+</ul>
+
+<h2>7. AI Aanbevelingen en Reflecties</h2>
+<ul>
+  <li>Vergeet niet de betrokkenheid van IT-experts bij de use case-ontwikkeling, aangezien AI-implementatie technische ondersteuning vereist.</li>
+  <li>Risico's zoals informatie te versnipperd te verzamelen kunnen verstoord worden door duidelijke communicatieplatforms die centraal staan.</li>
+  <li>Integreer deze discussie met andere initiatieven gericht op klanttevredenheid en interne efficiëntie.</li>
+  <li>Best practices includeer projectbeheer tools voor efficiëntie en traceerbare voortgang.</li>
+</ul>
+
+</body>
+</html>
